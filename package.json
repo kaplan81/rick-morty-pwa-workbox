@@ -7,9 +7,9 @@
     "clean": "rm -rf ./dist/*",
     "clean:css": "rm -rf ./dist/css/*",
     "copy": "copyfiles -e \"**/*.scss\" -u 1 src/**/**/* src/**/* src/* dist",
-    "sass": "npm run clean:css && npx sass src/scss:dist/csss --no-source-map",
+    "sass": "npm run clean:css && npx sass src/scss:dist/css --no-source-map",
     "sass:w": "npm run clean:css && npx sass src/scss:dist/css --no-source-map --watch",
-    "start": "npx serve -l 1981"
+    "start": "npx serve -l 1981 dist"
   },
   "repository": {
     "type": "git",
