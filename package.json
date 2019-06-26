@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Demo on how to do a PWA with workbox step by step.",
   "scripts": {
+    "build": "npm run clean && npm run sass && npm run copy",
     "clean": "rm -rf ./dist/*",
-    "copy": "cp -r src/* dist",
+    "clean:css": "rm -rf ./dist/css/*",
+    "copy": "cp src/index.html dist",
+    "sass": "npm run clean:css && npx sass src/scss:dist/csss --no-source-map",
+    "sass:w": "npm run clean:css && npx sass src/scss:dist/css --no-source-map --watch",
     "start": "npx serve -l 1981"
   },
   "repository": {
@@ -16,6 +20,7 @@
   },
   "homepage": "https://github.com/kaplan81/rick-morty-pwa-workbox#readme",
   "devDependencies": {
+    "sass": "^1.22.0",
     "serve": "^11.0.2"
   }
 }
