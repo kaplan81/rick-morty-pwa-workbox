@@ -1,0 +1,21 @@
+{
+  "name": "rick-morty-pwa-workbox",
+  "version": "1.0.0",
+  "description": "Demo on how to do a PWA with workbox step by step.",
+  "scripts": {
+    "clean": "rm -rf ./dist/*",
+    "copy": "cp -r src/* dist",
+    "start": "npx serve -l 1981"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaplan81/rick-morty-pwa-workbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kaplan81/rick-morty-pwa-workbox/issues"
+  },
+  "homepage": "https://github.com/kaplan81/rick-morty-pwa-workbox#readme",
+  "devDependencies": {
+    "serve": "^11.0.2"
+  }
+}
