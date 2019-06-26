@@ -6,7 +6,7 @@
     "build": "npm run clean && npm run sass && npm run copy",
     "clean": "rm -rf ./dist/*",
     "clean:css": "rm -rf ./dist/css/*",
-    "copy": "cp src/index.html dist",
+    "copy": "cp src/index.html src/pizza.ico dist",
     "sass": "npm run clean:css && npx sass src/scss:dist/csss --no-source-map",
     "sass:w": "npm run clean:css && npx sass src/scss:dist/css --no-source-map --watch",
     "start": "npx serve -l 1981"
