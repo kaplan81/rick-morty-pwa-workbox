@@ -1,0 +1,28 @@
+$blue-theme: (
+  primary: (
+    main: #5d99f5,
+    darker: #5278d3,
+    lighter: #7db8fa
+  ),
+  secondary: (
+    main: #f5b85d,
+    darker: #f29b29,
+    lighter: #fae0b7
+  ),
+  text: (
+    primary: (
+      main: rgba(black, 0.87),
+      darker: white,
+      lighter: rgba(black, 0.87)
+    ),
+    secondary: (
+      main: rgba(black, 0.87),
+      darker: rgba(black, 0.87),
+      lighter: rgba(black, 0.87)
+    )
+  ),
+  background: #fff,
+  foreground: #ccc,
+  warning: #d85a17,
+  error: #b00020
+);

@@ -1,0 +1,4 @@
+@import '../mixins/theme.mixin.scss';
+@import 'themes/blue-theme.variable';
+
+@include theme($blue-theme);
