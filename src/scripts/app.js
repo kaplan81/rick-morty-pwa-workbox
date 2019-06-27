@@ -6,8 +6,14 @@ function init() {
   renderCharachters();
 }
 
-function renderCharachters() {
+async function renderCharachters() {
   const charachters = document.querySelector('.charachters');
-  console.log('charachters:::', charachters);
-  console.log('getCharacter:::', getCharacter);
+  const twentyFirstCharacters = await getCharacter();
+  console.log('twentyFirstCharacters:::', twentyFirstCharacters);
+  for (const character of twentyFirstCharacters.results) {
+    const card = document.createElement('div');
+    card.classList.add('character-card');
+    card.append(character.name);
+    charachters.appendChild(card);
+  }
 }
