@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Demo on how to do a PWA with workbox step by step.",
   "scripts": {
-    "build": "npm run clean && npm run sass && npm run copy",
+    "build": "./build.sh",
     "clean": "rm -rf ./dist/*",
     "clean:css": "rm -rf ./dist/css/*",
-    "copy": "copyfiles -e \"**/*.scss\" -u 1 src/**/**/**/* src/**/**/* src/**/* src/* dist",
+    "postinstall": "chmod +x build.sh",
     "sass": "npm run clean:css && npx sass src/scss:dist/css --no-source-map",
     "sass:w": "npm run clean:css && npx sass src/scss:dist/css --no-source-map --watch",
     "start": "npx serve -l 1981 dist"
