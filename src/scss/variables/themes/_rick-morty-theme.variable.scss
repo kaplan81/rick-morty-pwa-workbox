@@ -5,9 +5,9 @@ $rick-morty-theme: (
     lighter: #ffff9c
   ),
   secondary: (
-    main: #6c9afc,
-    darker: #2f6cc8,
-    lighter: #a2caff
+    main: #004d40,
+    darker: #39796b,
+    lighter: #00251a
   ),
   text: (
     primary: (
@@ -16,9 +16,9 @@ $rick-morty-theme: (
       lighter: rgba(black, 0.87)
     ),
     secondary: (
-      main: rgba(black, 0.87),
+      main: white,
       darker: white,
-      lighter: rgba(black, 0.87)
+      lighter: white
     )
   ),
   background: #fccf6c,
