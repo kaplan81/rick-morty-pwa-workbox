@@ -23,5 +23,8 @@
     "copyfiles": "^2.1.0",
     "sass": "^1.22.0",
     "serve": "^11.0.2"
+  },
+  "dependencies": {
+    "rickmortyapi": "^0.2.1"
   }
 }
