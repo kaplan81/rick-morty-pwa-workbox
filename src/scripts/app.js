@@ -1,4 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => init(), false);
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+    init();
+  },
+  false
+);
 
 const rickMortyApp = {
   urlParams: {}
@@ -22,7 +28,7 @@ function createCard() {
   const placeholderImage = document.createElement('img');
   const image = document.createElement('img');
   const caption = document.createElement('figcaption');
-  figure.classList.add('character-card');
+  figure.classList.add('character-card', 'animated');
   placeholderImage.setAttribute('src', 'assets/img/placeholders/avatar-placeholder.jpeg');
   image.style.display = 'none';
 
@@ -34,10 +40,10 @@ function generateFigure(parent, figure, placeholderImage, image, caption) {
   figure.appendChild(image);
   figure.appendChild(caption);
   parent.appendChild(figure);
-  image.onload = () => {
+  image.addEventListener('load', function() {
     figure.removeChild(placeholderImage);
     image.style.removeProperty('display');
-  };
+  });
 }
 
 async function renderCharacter() {
@@ -80,8 +86,14 @@ async function renderCharacters() {
     const card = createCard();
     card.image.setAttribute('src', singleCharacter.image);
     card.caption.innerHTML = `<h4>${singleCharacter.name}</h4>`;
-    card.figure.addEventListener('click', () => {
+    card.figure.addEventListener('click', function() {
       window.location = `/character?id=${singleCharacter.id}`;
+    });
+    card.figure.addEventListener('mouseover', function() {
+      card.figure.classList.add('pulse');
+    });
+    card.figure.addEventListener('mouseout', function() {
+      card.figure.classList.remove('pulse');
     });
     generateFigure(characters, card.figure, card.placeholderImage, card.image, card.caption);
   }
