@@ -6,7 +6,6 @@
     "build": "./build.sh",
     "clean": "rm -rf ./dist/*",
     "clean:css": "rm -rf ./dist/css/*",
-    "postinstall": "chmod +x build.sh",
     "sass": "npm run clean:css && npx sass src/scss:dist/css --no-source-map",
     "sass:w": "npm run clean:css && npx sass src/scss:dist/css --no-source-map --watch",
     "start": "npx serve -l 1981 dist"
