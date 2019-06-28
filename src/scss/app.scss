@@ -39,7 +39,7 @@ body {
         color: $secondary;
         font-weight: bold;
       }
-      .charachters.card-grid {
+      .characters.card-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax($card-size, 1fr));
         grid-auto-rows: 1fr;
