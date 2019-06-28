@@ -64,7 +64,12 @@ async function renderCharacter() {
   card.image.setAttribute('src', selectedCharacter.image);
   card.placeholderImage.classList.add('col-12', 'col-sm-6');
   card.image.classList.add('col-12', 'col-sm-6');
-  if (status === 'dead') character.classList.add('dead');
+  if (status === 'dead') {
+    character.classList.add('dead');
+    card.figure.classList.add('flipInX');
+  } else {
+    card.figure.classList.add('flipInY');
+  }
   card.caption.innerHTML = `
     <h3>${selectedCharacter.name}</h3>
     <p><em>Species</em>: ${selectedCharacter.species}</p>
