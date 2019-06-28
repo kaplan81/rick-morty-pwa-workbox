@@ -1,11 +1,11 @@
+document.addEventListener('DOMContentLoaded', () => init(), false);
+
 const rickMortyApp = {
   urlParams: {}
 };
-
+const main = document.querySelector('main');
 const characters = document.querySelector('.characters');
 const character = document.querySelector('.character');
-
-init();
 
 function init() {
   rickMortyApp.urlParams = new URLSearchParams(window.location.search);
@@ -19,11 +19,25 @@ function init() {
 
 function createCard() {
   const figure = document.createElement('figure');
+  const placeholderImage = document.createElement('img');
   const image = document.createElement('img');
   const caption = document.createElement('figcaption');
   figure.classList.add('character-card');
+  placeholderImage.setAttribute('src', 'assets/img/placeholders/avatar-placeholder.jpeg');
+  image.style.display = 'none';
 
-  return { figure, image, caption };
+  return { caption, figure, image, placeholderImage };
+}
+
+function generateFigure(parent, figure, placeholderImage, image, caption) {
+  figure.appendChild(placeholderImage);
+  figure.appendChild(image);
+  figure.appendChild(caption);
+  parent.appendChild(figure);
+  image.onload = () => {
+    figure.removeChild(placeholderImage);
+    image.style.removeProperty('display');
+  };
 }
 
 async function renderCharacter() {
@@ -37,34 +51,39 @@ async function renderCharacter() {
   console.log('selectedCharacter:::', selectedCharacter);
 
   const characterHeading = document.querySelector('.character-heading');
-  characterHeading.append(status);
+  characterHeading.append('This character is ' + status + '!');
 
   const card = createCard();
+  card.figure.classList.add('grid-12');
   card.image.setAttribute('src', selectedCharacter.image);
+  card.placeholderImage.classList.add('col-12', 'col-sm-6');
+  card.image.classList.add('col-12', 'col-sm-6');
+  if (status === 'dead') character.classList.add('dead');
   card.caption.innerHTML = `
     <h3>${selectedCharacter.name}</h3>
-    <p>LOCATION: ${selectedCharacter.location.name}</p>
-    <p>SPECIES: ${selectedCharacter.species}</p>
+    <p><em>Species</em>: ${selectedCharacter.species}</p>
+    <p><em>Origin</em>: ${selectedCharacter.origin.name}</p>
+    <p><em>Location</em>: ${selectedCharacter.location.name}</p>
     <a href="/">Back to the list</a>
   `;
-  card.figure.appendChild(card.image);
-  card.figure.appendChild(card.caption);
-  character.appendChild(card.figure);
+  card.caption.classList.add('col-12', 'col-sm-6');
+  generateFigure(character, card.figure, card.placeholderImage, card.image, card.caption);
+  main.style.removeProperty('display');
 }
 
 async function renderCharacters() {
   const twentyFirstCharacters = await getCharacter();
+
   console.log('twentyFirstCharacters:::', twentyFirstCharacters);
 
   for (const singleCharacter of twentyFirstCharacters.results) {
     const card = createCard();
     card.image.setAttribute('src', singleCharacter.image);
     card.caption.innerHTML = `<h4>${singleCharacter.name}</h4>`;
-    card.figure.appendChild(card.image);
-    card.figure.appendChild(card.caption);
-    characters.appendChild(card.figure);
     card.figure.addEventListener('click', () => {
       window.location = `/character?id=${singleCharacter.id}`;
     });
+    generateFigure(characters, card.figure, card.placeholderImage, card.image, card.caption);
   }
+  main.style.removeProperty('display');
 }

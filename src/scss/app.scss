@@ -13,6 +13,7 @@ body {
   font-family: Arial, Verdana, sans-serif;
   font-size: $rem;
   color: $primary-text;
+  background-color: #fed967;
   background-image: url('../assets/img/bg/halftone-yellow.png');
   #layout {
     display: grid;
@@ -38,6 +39,14 @@ body {
         margin: $space $space * 2;
         color: $secondary;
         font-weight: bold;
+        &.character-heading {
+          margin: $space * 2 $space * 2;
+          font-size: 2rem;
+          text-align: center;
+          @include smaller-than(md) {
+            font-size: 1.5rem;
+          }
+        }
       }
       .characters.card-grid {
         display: grid;
@@ -69,6 +78,82 @@ body {
             padding: $gap;
             * {
               text-align: center;
+            }
+          }
+        }
+      }
+      .character.card-selected {
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+        padding: $space * 2 0;
+        &.dead {
+          .x-for-deceased {
+            display: block !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            padding: $space * 2 0;
+            svg {
+              padding: $gutter;
+              width: 100%;
+              fill: $error;
+              z-index: 1;
+              opacity: $color-transparency;
+            }
+          }
+          figure {
+            img {
+              -webkit-filter: sepia(1) !important;
+              filter: sepia(1) !important;
+            }
+          }
+        }
+        @include bigger-than(sm) {
+          width: 80%;
+        }
+        @include bigger-than(md) {
+          width: 70%;
+        }
+        @include bigger-than(lg) {
+          width: 60%;
+        }
+        .character-card {
+          background: $secondary;
+          opacity: $color-transparency;
+          border-radius: $card-border-radius;
+          padding: $gutter;
+          img {
+            position: relative;
+            width: 100%;
+            -webkit-filter: saturate(3);
+            filter: saturate(3);
+          }
+          figcaption {
+            position: relative;
+            color: white;
+            padding: $space;
+            text-shadow: 3px 4px 3px rgba(0, 37, 26, 0.79);
+            * {
+              padding: $gap 0;
+            }
+            h3 {
+              font-size: 1.6rem;
+              margin-bottom: $gutter;
+            }
+            p {
+              em {
+                text-decoration: underline;
+              }
+            }
+            a {
+              display: block;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              padding: 0 $gap;
             }
           }
         }
