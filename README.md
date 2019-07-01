@@ -42,7 +42,7 @@ Now, the `master` branch should be kept pristine, since we can always come back 
 Go to step zero. It is a copy of `master`.
 
 ```bash
-git checkout `step-00-non-progressive-app`
+git checkout step-00-non-progressive-app
 ```
 
 # Related documentation
