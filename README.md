@@ -26,9 +26,24 @@ It is not a library but a set of libraries and Node modules that make your life 
 
 The `master` branch contains a naked project. We still haven't provided the service worker blanket. However all necessary packages are already specified and the infrastructure is ready for you to take the steps to the final product.
 
-Each of those steps are zero-based numbered in the shape of branches. They keep a `step-xx-title-of-the-step` naming convention so if you ever get stuck in one of them you always have the possibility of checking out the next branch and continue working.
+Each of those steps are zero-based numbered in the shape of branches. They keep a `step-xx-title-of-the-step` naming convention.
+
+The Step 0 pictures the specific goals to achieve a PWA. No code to be provided there.
+
+The next steps involve some development so they are tasks.
 
 On each branch the `README.md` file is different and self-explanatory. They correspond the current development stage and make you aware of how the code evolves.
+
+However you should not check out those branches unless you get stuck.
+
+Let us say that you are reading the instructions of the first step from the `README.md` of the `step-01-web-app-manifest` on its GitHub web page. If you are not capable of achieving the desired result you should not worry. Just do this:
+
+```bash
+git checkout step-01-web-app-manifest
+git branch step-01-web-app-manifest-mine
+```
+
+This way you step ahead, you do not get delayed and moreover you keep a clean workflow.
 
 ## Get started
 
