@@ -67,8 +67,12 @@ The HTTPS red flag is totally expected. For security reasons service workers onl
 
 We assume that our app will run on a secure protocol in production so we can ignore this supposed failure. However we definitely need to work on the rest of them and make them into green.
 
-Are you ready for the challenge? Jump to the next branch and start providing your own changes to the code:
+Are you ready for the challenge?
 
-```bash
-git checkout step-01-web-app-manifest
-```
+From this point on you are going to start providing your own code.
+
+**Do not checkout the next branch**. Keep yourself where you are in your local machine.
+
+**BUT** follow the online instructions specified in the `README.md` of that branch:
+
+[https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-01-web-app-manifest](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-01-web-app-manifest)
