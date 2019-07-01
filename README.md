@@ -42,7 +42,7 @@ Anyway, as you can see we have lost everything. This exactly what we are trying 
 
 Lighthouse is an excellent tool to improve the quality of web pages.  It has audits for performance, accessibility, progressive web apps, and more. It is pre-installed in all Chrome browsers and you can either run it from the DevTools or from a Node command.
 
-In our case we are ready to run our npm script, generate the corresponding report on HTML and open it up automatically in our browser.
+In our case we are ready to run our npm script, generate the corresponding report on HTML and open it up automatically in our browser. But do not forget to go online again first.
 
 ```bash
 npm run lighthouse
@@ -54,7 +54,7 @@ Now click on the Progressive Web App link (top left).
 
 Notice that there are a lot of things in red:
 
-* <span style="color:red">Current page does not respond with a 200 when offline.</span>
+* Current page does not respond with a 200 when offline.
 * start_url does not respond with a 200 when offline
 * Does not register a service worker that controls page and start_url
 * Web app manifest does not meet the installability requirements
