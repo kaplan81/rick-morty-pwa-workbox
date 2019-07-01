@@ -37,6 +37,8 @@ The prerequisites are simple. Have 2 things installed in your machine:
 * Google Chrome
 * Node.js
 
+Clone this repo.
+
 Now, the `master` branch should be kept pristine, since we can always come back to it for a fresh start.
 
 Go to step zero. It is a copy of `master`.
