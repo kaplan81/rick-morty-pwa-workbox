@@ -84,6 +84,7 @@ async function renderCharacter() {
 
 async function renderCharacters() {
   const twentyFirstCharacters = await getCharacter();
+  shuffle(twentyFirstCharacters.results);
 
   console.log('twentyFirstCharacters:::', twentyFirstCharacters);
 
@@ -103,4 +104,20 @@ async function renderCharacters() {
     generateFigure(characters, card.figure, card.placeholderImage, card.image, card.caption);
   }
   main.style.removeProperty('display');
+}
+
+function shuffle(array) {
+  let currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
+
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
