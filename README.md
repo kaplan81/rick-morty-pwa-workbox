@@ -1,6 +1,4 @@
-# Rick & Morty PWA Workshop
-
-> How to create your own PWA with Workbox step by step.
+# Rick & Morty PWA Workshop -> Step 0
 
 ## Up and running
 
@@ -42,7 +40,9 @@ Anyway, as you can see we have lost everything. This exactly what we are trying 
 
 Lighthouse is an excellent tool to improve the quality of web pages.  It has audits for performance, accessibility, progressive web apps, and more. It is pre-installed in all Chrome browsers and you can either run it from the DevTools or from a Node command.
 
-In our case we are ready to run our npm script, generate the corresponding report on HTML and open it up automatically in our browser. But do not forget to go online again first.
+In our case we are ready to run our npm script, generate the corresponding report on HTML and open it up automatically in our browser.
+
+> Do not forget to go online again first!
 
 ```bash
 npm run lighthouse
@@ -50,7 +50,7 @@ npm run lighthouse
 
 <img src="visuals/lighthouse-initial-stats.png">
 
-Now click on the Progressive Web App link (top left).
+Now click on the Progressive Web App link (top right).
 
 Notice that there are a lot of things in red:
 
@@ -62,3 +62,13 @@ Notice that there are a lot of things in red:
 * Is not configured for a custom splash screen
 * Does not set an address-bar theme color
 * Does not provide a valid apple-touch-icon
+
+The HTTPS red flag is totally expected. For security reasons service workers only run over the HTTPS protocol but if the hostname corresponds our `localhost` the HTTP protocol is also considered secure and we can run our service worker over it. This is intended to make development easier.
+
+We assume that our app will run on a secure protocol in production so we can ignore this supposed failure. However we definitely need to work on the rest of them and make them into green.
+
+Are you ready for the challenge? Jump to the next branch and start providing your own changes to the code:
+
+```bash
+git checkout step-01-web-app-manifest
+```
