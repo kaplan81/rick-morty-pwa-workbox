@@ -6,6 +6,7 @@
     "build": "./build.sh",
     "clean": "rm -rf ./dist/*",
     "clean:css": "rm -rf ./dist/css/*",
+    "lighthouse": "npx lighthouse http://localhost:1981/ --view --chrome-flags=\"--headless\" --output-path=./lighthouse/lighthouse_\"$(date \"+%Y-%m-%d_%H-%M-%S\")\".report.html",
     "sass": "npm run clean:css && npx sass src/scss:dist/css --no-source-map",
     "sass:w": "npm run clean:css && npx sass src/scss:dist/css --no-source-map --watch",
     "start": "npx serve -l 1981 dist"
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/kaplan81/rick-morty-pwa-workbox#readme",
   "devDependencies": {
     "copyfiles": "^2.1.0",
+    "lighthouse": "^5.1.0",
     "sass": "^1.22.0",
     "serve": "^11.0.2",
     "workbox-cli": "^4.3.1"
