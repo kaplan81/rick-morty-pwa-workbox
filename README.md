@@ -37,7 +37,7 @@ The prerequisites are simple. Have 2 things installed in your machine:
 * Google Chrome
 * Node.js
 
-Clone this repo.
+Clone this repo and open the project in your favourite code editor.
 
 Now, the `master` branch should be kept pristine, since we can always come back to it for a fresh start.
 
