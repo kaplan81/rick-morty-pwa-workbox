@@ -1,5 +1,5 @@
 node_modules
 dist
-lighthouse
+lighthouse/**.report.html
 
 .DS_Store
