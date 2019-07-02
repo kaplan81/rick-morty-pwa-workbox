@@ -53,7 +53,7 @@ Workbox handles 2 types of caching:
 * Precaching: is performed during the service worker installation and it takes a precache manifest.
 * Runtime caching: is performed on fetch events.
 
-Be careful not to mistake precache manifest with web app manifest. The precache manifest only specifies the files that are going to be precached by our service worker.
+Be careful not to mistake precache manifest with web app manifest. The precache manifest only specifies the files that are going to be precached by our service worker. This is the App Shell.
 
 The first thing we need is a file for our custom service worker. Create it in `src/sw-custom.js`.
 
