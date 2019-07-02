@@ -123,7 +123,7 @@ If either the cache or the service workers behave funny and have the need for a 
 
 <img src="visuals/clear-storage.png">
 
-Just remember that if you do that you will need to reload twice to see the runtime caches since on the first load you only get the precached files. The rest of the information gets cached during this first life of the app so we will only be able to see this information on a second round.
+Just remember that if you do that you will need to reload twice to see the runtime caches since on the first load you only get the precached files. The rest of the information gets cached during this first life of the app so we will only be able to see it on a second round.
 
 ## If you didn't make it
 
