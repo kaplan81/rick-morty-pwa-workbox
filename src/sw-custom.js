@@ -7,7 +7,10 @@ if (workbox) {
     modulePathPrefix: '/scripts/workbox-libs/workbox-v4.3.1/'
   });
 
-  workbox.precaching.precacheAndRoute([]);
+  workbox.precaching.precacheAndRoute([], {
+    // Ignore all URL parameters.
+    ignoreURLParametersMatching: [/.*/]
+  });
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }

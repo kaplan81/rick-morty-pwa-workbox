@@ -67,7 +67,10 @@ if (workbox) {
     modulePathPrefix: '/scripts/workbox-libs/workbox-vx.x.x/'
   });
 
-  workbox.precaching.precacheAndRoute([]);
+  workbox.precaching.precacheAndRoute([], {
+    // Ignore all URL parameters.
+    ignoreURLParametersMatching: [/.*/]
+  });
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
@@ -75,7 +78,9 @@ if (workbox) {
 
 `importScripts()` method belongs to any worker global scope and allowes us to import one or more scripts into the current worker's scope. Fill in the corresponding Workbox version so that this method doesn't fail.
 
-`workbox.precaching.precacheAndRoute([])` is just a placeholder. The precache manifest will be generated inside it in our final `dist/sw.js`. So let's generate it.
+`workbox.precaching.precacheAndRoute([])` is just a placeholder. The precache manifest will be generated inside it in our final `dist/sw.js`. The `ignoreURLParametersMatching` property is used to avoid problems with our URL query parameters. 
+
+Let's generate our service worker.
 
 ```bash
 npx workbox wizard --injectManifest
