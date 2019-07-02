@@ -55,3 +55,10 @@ However, we still have 3 bugs to solve:
 * Does not register a service worker that controls page and start_url
 
 But don't worry. Everything will get better when we implement our service worker.
+
+## If you didn't make it
+
+```bash
+git checkout step-01-web-app-manifest
+git branch step-01-web-app-manifest-mine
+```
