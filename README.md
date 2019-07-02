@@ -4,7 +4,7 @@
 
 Activate again this checkbox from your DevTools.
 
-Now reload the page. From now one every time you reload you may have to get rid of this possible habit of yours (as a developer) of reloading without cache. Remember to do `cmd + r` instead of `cmd + shift + r`. That is important.
+Now reload the page. From now on every time you reload you may have to get rid of this possible habit of yours (as a developer) of reloading without cache. Remember to do `cmd + r` instead of `cmd + shift + r`. That is important.
 
 What do you see? It is the App Shell. We lost our dear offline dinosaur.
 
@@ -22,7 +22,15 @@ Go to your DevTools Application tab and check on the Cache Storage section.
 
 Look to the right. All our app shell, all the files specified in the `dist/sw.js` are cached there with their corresponding revision hash.
 
-We need to cache the response to the `rickandmortyapi` API. The URL we call to get the characters is `https://rickandmortyapi.com/api/character/?`.
+We need to cache the response to the `rickandmortyapi` API.
+
+The base URL we are using is `https://rickandmortyapi.com/api/character`. Then we got 3 different endpoints:
+
+1. `/?` gets all the characters. We use it on the home page.
+2. `/1` gets the character with id 1. We use it on the character page.
+3. `/avatar/1.jpeg` gets the picture (or avatar) of character with id 1. We use it on both pages.
+
+We shoud create a regular expression that matches both case 1 and case 2 for API calls but NOT case 3. That is probably the most difficult part of this exercise. We all have problems from time to time with regular expressions so if you cannot figure it out just look at the code of this branch for the solution.
 
 Since new characters can die as the TV shows goes on, we need to have the most up-to-date information so we will use the Network First caching strategy (falling back to cache).
 
@@ -32,7 +40,7 @@ Go to `src/sw-custom.js` and add the necessary runtime caching. Follow this impl
 
 ```javascript
 workbox.routing.registerRoute(
-  'https://entire-url/of/external-origin',
+  /https:\/\/regular-expression\/for\/api-url/,
   new workbox.strategies.MyCachingStrategy({
     cacheName: 'my-cache-name',
     plugins: []
@@ -54,7 +62,7 @@ npm run build
 
 What you are building now is a new version of your service worker because more than one byte of the file has changed. The browser detects that automatically and assigns a new id number to it. But if instead of performing the change on `registerRoute()` we would have changed the `workbox-config.js` and therefore our app shell then the name of the key for the Cache Storage would have needed to be re-assigned too. We are lucky that Workbox handles that for us. Otherwise we would have to change that key manually every time that the files to precache vary.
 
-Go to your DevTools Application tab again and what has happened there.
+Go to your DevTools Application tab again and see what has happened there.
 
 <img src="visuals/service-worker-waiting.png">
 
@@ -85,7 +93,7 @@ If there ir a gear icon on the request it means that this is a request made by t
 
 ## Cache the images
 
-But what happens if we go offline again. Well...
+But what happens if we go offline again? Well...
 
 <img src="visuals/offline-with-api-without-imgs.png">
 
@@ -93,13 +101,7 @@ We have cached the response from the server but then some resorce URLs are makin
 
 Your next challenge consists of caching the images. These are avatars so we don't need to constantly have the most up-to-date version of them. The Stale While Revalidate strategy seems to fit our needs here. With that will only use responses from the cache BUT we will also make a call to the network and if that call is successful we cache that response for the next time. Pretty neat, right?
 
-We need to know that we are using the same URL as with the API and that the extension of the images is `jpeg`. An example:
-
-```
-https://rickandmortyapi.com/api/character/avatar/1.jpeg
-```
-
-To match those calls we neex to use a regular expression this time.
+As we already know we are using the same base URL as with the API calls but with a different endpoint. We are looking for another regular expression but this time one that matches that base with an endpoint that contains the word `avatar` and ends with the string `jpeg`. 
 
 Additionally we want to store the images in a named `avatar-cache`, again we want to limit the entries to 20 and also, using the same plugin, we want the cached images to expire in a week so we get updated weekly. For that we would use the `maxAgeSeconds` property from the plugin.
 
@@ -115,4 +117,17 @@ npm run build
 
 <img src="visuals/avatar-cache.png">
 
-> If you ever get in trouble either with the cache or with the service workers you may need to start fresh. For that go to the Application -> Clear Storage section and click on "Clear site data".
+## If you get in trouble
+
+If either the cache or the service workers behave funny and have the need for a fresh start you can always call on a very useful utility from the DevTools. Go to the Application -> Clear Storage section and click on "Clear site data". This will not only remove the storage from this origin but it will also unregister all existing service workers.
+
+<img src="visuals/clear-storage.png">
+
+Just remember that if you do that you will need to reload twice to see the runtime caches since on the first load you only get the precached files. The rest of the information gets cached during this first life of the app so we will only be able to see this information on a second round.
+
+## If you didn't make it
+
+```bash
+git checkout step-03-offline-experience
+git branch step-03-offline-experience-mine
+```
