@@ -7,7 +7,7 @@ npm run clean
 npm run sass
 
 # Copy my own files
-npx copyfiles -e "**/*.scss" -u 1 src/**/**/**/* src/**/**/* src/**/* src/* dist
+npx copyfiles -e "**/*.scss" -e "**/sw-custom.js" -u 1 src/**/**/**/* src/**/**/* src/**/* src/* dist
 
 # Copy and rename node modules
 cp node_modules/rickmortyapi/src/index.js dist/scripts
