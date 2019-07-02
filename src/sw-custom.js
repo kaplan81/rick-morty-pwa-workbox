@@ -7,10 +7,13 @@ if (workbox) {
     modulePathPrefix: '/scripts/workbox-libs/workbox-v4.3.1/'
   });
 
-  workbox.precaching.precacheAndRoute([]);
+  workbox.precaching.precacheAndRoute([], {
+    // Ignore all URL parameters.
+    ignoreURLParametersMatching: [/.*/]
+  });
 
   workbox.routing.registerRoute(
-    'https://rickandmortyapi.com/api/character/?',
+    /https:\/\/rickandmortyapi.com\/api\/character(?!\/avatar)/,
     new workbox.strategies.NetworkFirst({
       cacheName: 'rickandmortyapi-cache',
       plugins: [
