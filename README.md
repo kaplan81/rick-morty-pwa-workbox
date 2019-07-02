@@ -122,7 +122,7 @@ Another beautiful sight:
 
 <img src="visuals/lighthouse-final-stats.png">
 
-This is how the modern web app should look like!
+This is what a modern web app should look like!
 
 ## If you didn't make it
 
