@@ -2,7 +2,7 @@
 
 ## Register the service worker
 
-Add the following code to your `src/index.html` file:
+Add the following code to your `src/index.html` file, right before the closing `</body>` tag:
 
 ```html
 <script>
