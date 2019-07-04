@@ -12,7 +12,7 @@ body {
   height: 100%;
   font-family: Arial, Verdana, sans-serif;
   font-size: $rem;
-  color: $primary-text;
+  color: $secondary-text;
   background-color: #fed967;
   background-image: url('../assets/img/bg/halftone-yellow.png');
   #layout {
@@ -26,7 +26,7 @@ body {
       grid-area: header;
       display: flex;
       align-items: center;
-      background-color: $secondary;
+      background-color: $primary;
       opacity: $color-transparency;
       h1 {
         margin: 0 $space * 2;
@@ -37,7 +37,7 @@ body {
       grid-area: main;
       h2 {
         margin: $space $space * 2;
-        color: $secondary;
+        color: $primary;
         font-weight: bold;
         &.character-heading {
           margin: $space * 2 $space * 2;
@@ -62,7 +62,7 @@ body {
           grid-column: 1 / 1;
         }
         .character-card {
-          background: $secondary;
+          background: $primary;
           opacity: $color-transparency;
           border-radius: $card-border-radius;
           padding: $gap---;
@@ -121,7 +121,7 @@ body {
           width: 60%;
         }
         .character-card {
-          background: $secondary;
+          background: $primary;
           opacity: $color-transparency;
           border-radius: $card-border-radius;
           padding: $gutter;

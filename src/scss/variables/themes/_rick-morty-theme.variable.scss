@@ -1,24 +1,24 @@
 $rick-morty-theme: (
   primary: (
-    main: #fccf6c,
-    darker: #c69d3d,
-    lighter: #ffff9c
-  ),
-  secondary: (
     main: #004d40,
     darker: #00251a,
     lighter: #39796b
   ),
+  secondary: (
+    main: #fccf6c,
+    darker: #c69d3d,
+    lighter: #ffff9c
+  ),
   text: (
     primary: (
-      main: rgba(black, 0.87),
-      darker: rgba(black, 0.87),
-      lighter: rgba(black, 0.87)
-    ),
-    secondary: (
       main: white,
       darker: white,
       lighter: white
+    ),
+    secondary: (
+      main: rgba(black, 0.87),
+      darker: rgba(black, 0.87),
+      lighter: rgba(black, 0.87)
     )
   ),
   background: #fccf6c,
