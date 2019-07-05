@@ -2,7 +2,7 @@
 
 ## Create the web app manifest
 
-So your mission, should you choose to accept it involves the creation of a new file: `manifest.json`. You just need to follow [this reference](https://developers.google.com/web/fundamentals/web-app-manifest/).
+So your mission, should you choose to accept it, involves the creation of a new file: `manifest.json`. You just need to follow [this reference](https://developers.google.com/web/fundamentals/web-app-manifest/).
 
 You should create this file in the `src` folder. The `build` script will take care of copying it to the `dist` public folder.
 
