@@ -14,7 +14,7 @@ You should probably read something about this fascinating topic if you haven't a
 
 But wisdom is not a requirement here. Just follow the steps and you will end up with a production ready Rick & Morty PWA.
 
-And we take the framework agnostic approach. React developers, Angular developers, Vue developers, Svelte developers,... they are all welcome to take this workshop. It is just a simple JavaSript app. Even native mobile developers might be interested.
+And we take the framework agnostic approach. React developers, Angular developers, Vue developers, Svelte developers,... they are all welcome to take this workshop. It is just a simple JavaScript app. Even native mobile developers might be interested.
 
 ## Why Workbox?
 
