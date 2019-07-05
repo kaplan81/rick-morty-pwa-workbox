@@ -26,11 +26,23 @@ body {
       grid-area: header;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       background-color: $primary;
       opacity: $color-transparency;
-      h1 {
-        margin: 0 $space * 2;
-        color: white;
+      a {
+        h1 {
+          margin: 0 $space * 2;
+          color: white;
+        }
+      }
+      .install-btn {
+        margin-right: $space * 2;
+        font-size: 1rem;
+        border-radius: $card-border-radius;
+        cursor: pointer;
+        &.hidden {
+          display: none;
+        }
       }
     }
     main {
