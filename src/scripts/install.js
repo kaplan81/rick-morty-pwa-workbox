@@ -1,8 +1,8 @@
 const installButton = document.querySelector('.install-btn');
 let deferredInstallPrompt = null;
 
-installButton.addEventListener('click', installPWA);
 window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
+installButton.addEventListener('click', installPWA);
 
 function installPWA(evt) {
   // Add code show install prompt & hide the install button.
