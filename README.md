@@ -33,6 +33,7 @@ The base URL we are using is `https://rickandmortyapi.com/api/character`. Then w
 We are going to use `workbox.routing.registerRoute()` method to cache routes in runtime. In order to do that we need to use regular expressions for 2 cases:
 
 A. Match retrieved data but not subsequent image requests. In other words: get all calls to the characters but not to their avatar images. That also means: match endpoint 1 AND 2 but NOT 3.
+
 B. Match only the calls to avatar images.
 
 So let's start with **case A**. This is probably the most difficult part of this exercise. We all have problems from time to time with regular expressions so if you cannot figure it out just look at the code of this branch for the solution or ask your instructor to send the segular expression string to you.
