@@ -6,7 +6,7 @@ So your mission, should you choose to accept it, involves the creation of a new 
 
 You should create this file in the `src` folder. The `build` script will take care of copying it to the `dist` public folder.
 
-Using your manifest your web app can:
+Using your manifest your web app should:
 
 * Tell the browser you want your app to open in a `standalone` window.
 * Define `/index.html` as the opened page when the app is first launched.
@@ -55,6 +55,8 @@ However, we still have 3 bugs to solve:
 * Does not register a service worker that controls page and start_url
 
 But don't worry. Everything will get better when we implement our service worker.
+
+Click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-02-app-shell) to navigate the instructions of the next step.
 
 ## If you didn't make it
 
