@@ -36,7 +36,7 @@ A. Match retrieved data but not subsequent image requests. In other words: get a
 
 B. Match only the calls to avatar images.
 
-So let's start with case A. This is probably the most difficult part of this exercise. We all have problems from time to time with regular expressions so if you cannot figure it out just look at the code of this branch for the solution or ask your instructor to send the segular expression string to you.
+So let's start with case A. This is probably the most difficult part of this exercise. We all have problems from time to time with regular expressions so if you cannot figure it out just look at the code of this branch for the solution or ask your instructor to send the regular expression string to you.
 
 But the pattern to match is not the only parameter to the `workbox.routing.registerRoute()` method. We also need a caching strategy.
 
