@@ -22,7 +22,7 @@ Go to your DevTools Application tab and check on the Cache Storage section.
 
 Look to the right. All our app shell, all the files specified in the `dist/sw.js` are cached there with their corresponding revision hash.
 
-We need to cache the response to the `rickandmortyapi` API.
+Now we need to cache the responses to the `rickandmortyapi` API.
 
 The base URL we are using is `https://rickandmortyapi.com/api/character`. Then we got 3 different endpoints:
 
@@ -30,7 +30,14 @@ The base URL we are using is `https://rickandmortyapi.com/api/character`. Then w
 2. `/1` gets the character with id 1. We use it on the character page.
 3. `/avatar/1.jpeg` gets the picture (or avatar) of character with id 1. We use it on both pages.
 
-We shoud create a regular expression that matches both case 1 and case 2 for API calls but NOT case 3. That is probably the most difficult part of this exercise. We all have problems from time to time with regular expressions so if you cannot figure it out just look at the code of this branch for the solution.
+We are going to use `workbox.routing.registerRoute()` method to cache routes in runtime. In order to do that we need to use regular expressions for 2 cases:
+
+A. Match retrieved data but not subsequent image requests. In other words: get all calls to the characters but not to their avatar images. That also means: match endpoint 1 AND 2 but NOT 3.
+B. Match only the calls to avatar images.
+
+So let's start with **case A**. This is probably the most difficult part of this exercise. We all have problems from time to time with regular expressions so if you cannot figure it out just look at the code of this branch for the solution or ask your instructor to send the segular expression string to you.
+
+But the pattern to match is not the only parameter to the `workbox.routing.registerRoute()` method. We also need a caching strategy.
 
 Since new characters can die as the TV shows goes on, we need to have the most up-to-date information so we will use the Network First caching strategy (falling back to cache).
 
@@ -40,9 +47,13 @@ Go to `src/sw-custom.js` and add the necessary runtime caching. Follow this impl
 
 ```javascript
 workbox.routing.registerRoute(
+  // Replace with the correct regular expression.
   /https:\/\/regular-expression\/for\/api-url/,
+  // Replace MyCachingStrategy with the correct caching strategy method.
   new workbox.strategies.MyCachingStrategy({
+    // Replace 'my-cache-name' with the correct cache name.
     cacheName: 'my-cache-name',
+    // Add the corresponding plugins.
     plugins: []
   })
 );
@@ -126,6 +137,8 @@ If either the cache or the service workers behave funny and have the need for a 
 Just remember that if you do that you will need to reload twice to see the runtime caches since on the first load you only get the precached files. The rest of the information gets cached during this first life of the app so we will only be able to see it on a second round.
 
 Try it!
+
+Click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-04-install-experience) to navigate the instructions of the next step.
 
 ## If you didn't make it
 
