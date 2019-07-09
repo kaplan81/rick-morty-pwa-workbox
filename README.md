@@ -50,7 +50,7 @@ This way you step ahead, you do not get delayed and moreover you keep a clean wo
 The prerequisites are simple. Have 2 things installed in your machine:
 
 * Google Chrome
-* Node.js
+* Node.js LTS or greater
 
 Clone this repo and open the project in your favourite code editor.
 
