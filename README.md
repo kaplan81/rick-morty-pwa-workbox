@@ -23,7 +23,6 @@ Add the following code to your `src/index.html` file, right before the closing `
 
 ```bash
 npm run build
-npm start
 ```
 
 If you start the app you should see an error message:
@@ -58,19 +57,18 @@ Be careful not to mistake precache manifest with web app manifest. The precache 
 The first thing we need is a file for our custom service worker. Create it in `src/sw-custom.js`.
 
 ```javascript
+// Replace the x's in the string withe the correct Workbox copied version!
 importScripts('/scripts/workbox-libs/workbox-vx.x.x/workbox-sw.js');
 
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
 
   workbox.setConfig({
+    // Replace the x's in the string withe the correct Workbox copied version!
     modulePathPrefix: '/scripts/workbox-libs/workbox-vx.x.x/'
   });
 
-  workbox.precaching.precacheAndRoute([], {
-    // Ignore all URL parameters.
-    ignoreURLParametersMatching: [/.*/]
-  });
+  workbox.precaching.precacheAndRoute([]);
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
@@ -78,7 +76,7 @@ if (workbox) {
 
 `importScripts()` method belongs to any worker global scope and allowes us to import one or more scripts into the current worker's scope. Fill in the corresponding Workbox version so that this method doesn't fail.
 
-`workbox.precaching.precacheAndRoute([])` is just a placeholder. The precache manifest will be generated inside it in our final `dist/sw.js`. The `ignoreURLParametersMatching` property is used to avoid problems with our URL query parameters. 
+`workbox.precaching.precacheAndRoute([])` is just a placeholder. The precache manifest will be generated inside it in our final `dist/sw.js`. 
 
 Let's generate our service worker.
 
@@ -86,7 +84,7 @@ Let's generate our service worker.
 npx workbox wizard --injectManifest
 ```
 
-The Workbox wizard asks a series of questions. You should know the answers. Select all types of files. In the end a `workbox-config.js` file should be created in your project root.
+The Workbox wizard asks a series of questions. You can find out the answers by looking at the should be the resulting configuration file:
 
 ```javascript
 module.exports = {
@@ -97,9 +95,24 @@ module.exports = {
 };
 ```
 
+Select all types of files. In the end a `workbox-config.js` file just like that one should be created in your project root folder.
+
+Now that we have our configs we can mofify the precache manifest placeholder in `sw-custom.js`.
+
+```javascript
+workbox.precaching.precacheAndRoute([], {
+    // Ignore all URL parameters.
+    ignoreURLParametersMatching: [/.*/]
+  });
+```
+
+The `ignoreURLParametersMatching` property is used to avoid problems with our URL query parameters.
+
 But you need to do one more thing. Go to `package.json` and add a sequential (non parallel) execution at the end of the "build" script: `npx workbox injectManifest`.
 
-Unleash it.
+If you don't know the difference between sequential and parallel execution in npm scripts check out this [Stack Overflow question](https://stackoverflow.com/questions/39172536/running-npm-scripts-sequentially/39172660#answer-39172660)
+
+Now build it.
 
 ```bash
 npm run build
@@ -128,6 +141,8 @@ Another beautiful sight:
 <img src="visuals/lighthouse-final-stats.png">
 
 This is what a modern web app should look like!
+
+Click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-03-offline-experience) to navigate the instructions of the next step. 
 
 ## If you didn't make it
 
