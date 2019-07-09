@@ -57,14 +57,14 @@ Be careful not to mistake precache manifest with web app manifest. The precache 
 The first thing we need is a file for our custom service worker. Create it in `src/sw-custom.js`.
 
 ```javascript
-// Replace the x's in the string withe the correct Workbox copied version!
+// Replace the x's in the string with the correct Workbox copied version!
 importScripts('/scripts/workbox-libs/workbox-vx.x.x/workbox-sw.js');
 
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
 
   workbox.setConfig({
-    // Replace the x's in the string withe the correct Workbox copied version!
+    // Replace the x's in the string with the correct Workbox copied version!
     modulePathPrefix: '/scripts/workbox-libs/workbox-vx.x.x/'
   });
 
@@ -84,7 +84,7 @@ Let's generate our service worker.
 npx workbox wizard --injectManifest
 ```
 
-The Workbox wizard asks a series of questions. You can find out the answers by looking at the should be the resulting configuration file:
+The Workbox wizard asks a series of questions. You can find out the answers by looking at what should be the resulting configuration file:
 
 ```javascript
 module.exports = {
