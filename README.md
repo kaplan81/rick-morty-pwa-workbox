@@ -6,7 +6,7 @@ With all this development you have probably missed the Web App Install Banner.
 
 Now if you want to install your app you need to go to the three-dot context menu and click on "Install Rick Morty PWA...". But we can do better.
 
-In `src/index.html` provide a `<button>` to the header. Add the classes `install-btn` and `hidden` to it. And please go to `app.scss` and make it look a little nice and to the right.
+In `src/index.html` provide a `<button>` to the header. Add the classes `install-btn` and `hidden` to it. Go to `app.scss` and use the former to make it look nicer and the latter to hide the button with `display: none;`.
 
 ## Install Script
 
@@ -16,7 +16,7 @@ OK. Now that we have our button we just need to create an script to handle it. P
 <script src="/scripts/install.js"></script>
 ```
 
-The fist thing you need on this script are 2 variables: one for the button element and another one for the `beforeinstallprompt` event:
+The first thing you need in this script are 2 variables: one for the button element and another one for the `beforeinstallprompt` event that we initialize to `null`:
 
 ```javascript
 const installButton = document.querySelector('.install-btn');
@@ -30,9 +30,11 @@ window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 installButton.addEventListener('click', installPWA);
 ```
 
-And then 2 functions. The first one saves the `beforeinstallprompt` in the `deferredInstallPrompt` and makes the button visible by removing the `hidden` class. Try to do it!
+And then 2 functions. The first one is very short. It receives the `beforeinstallprompt` as an `event` parameter and saves it in the `deferredInstallPrompt` variable. It also makes the button visible by removing the `hidden` class. With this description in mind try to write the function from scratch. And remember that the name of this function is specified as a callback in one of the mentioned events.
 
-The second function prompts the banner, hiddes the button and depending on the user's choice shows a different message in the console. Like this:
+Done? OK.
+
+The second function prompts the banner, hiddes the button and depending on the user's choice shows a different message in the console. Copy it and paste it:
 
 ```javascript
 function installPWA(evt) {
