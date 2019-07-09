@@ -73,6 +73,4 @@ From this point on you are going to start providing your own code.
 
 **Do not checkout the next branch**. Keep yourself where you are in your local machine.
 
-**BUT** follow the online instructions specified in the `README.md` of that branch:
-
-[https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-01-web-app-manifest](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-01-web-app-manifest)
+Click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-01-web-app-manifest) to navigate to the instructions of the next branch.
