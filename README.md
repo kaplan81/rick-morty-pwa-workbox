@@ -28,15 +28,15 @@ The `master` branch contains a naked project. We still haven't provided the serv
 
 Each of those steps are zero-based numbered in the shape of branches. They keep a `step-xx-title-of-the-step` naming convention.
 
-The Step 0 pictures the specific goals to achieve a PWA. No code to be provided there.
-
-The next steps involve some development so they are tasks.
+The step 0 branch pictures the specific goals to achieve a PWA. No code to be provided there. The next steps/branches do involve some development. They are your tasks, your challenges.
 
 On each branch the `README.md` file is different and self-explanatory. They correspond the current development stage and make you aware of how the code evolves.
 
-However you should not check out those branches unless you get stuck.
+**IMPORTANT**: the only branch you should checkout is `step-00-non-progressive-app`. It is also recommended that you create your own branch from that one (e.g. `step-00-non-progressive-app-mine`).
 
-Let us say that you are reading the instructions of the first step from the `README.md` of the `step-01-web-app-manifest` on its GitHub web page. If you are not capable of achieving the desired result you should not worry. Just do this:
+From that point on you will stay in that branch and start providing your own code at the same time that you read the `README.md` instructions of each subsequent branch.
+
+However let us say that you are reading the instructions of the first step from the `README.md` of the `step-01-web-app-manifest` on its GitHub web page. If you are not capable of achieving the desired result you should not worry. Just do this:
 
 ```bash
 git checkout step-01-web-app-manifest
@@ -56,11 +56,16 @@ Clone this repo and open the project in your favourite code editor.
 
 Now, the `master` branch should be kept pristine, since we can always come back to it for a fresh start.
 
-Go to step zero. It is a copy of `master`.
+Checkout the step 0 branch. That one, with the exception of `README.md`, is a copy of `master`.
 
 ```bash
 git checkout step-00-non-progressive-app
+git branch step-00-non-progressive-app-mine
 ```
+
+Now click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-00-non-progressive-app) to read the instructions of the step 0 branch.
+
+The game is afoot.
 
 # Related documentation
 
