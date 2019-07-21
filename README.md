@@ -48,7 +48,6 @@ And it would also be very good to add this after your scripts:
 
 ```bash
 npm run build
-npm start
 npm run lighthouse
 ```
 
