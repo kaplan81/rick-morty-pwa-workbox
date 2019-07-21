@@ -41,10 +41,6 @@ Instead of that we are going to serve the libraries ourselves. Go to `package.js
 
 If you don't know the difference between sequential and parallel execution in npm scripts check out this [Stack Overflow question](https://stackoverflow.com/questions/39172536/running-npm-scripts-sequentially/39172660#answer-39172660)
 
-```bash
-npx workbox copyLibraries src/scripts
-```
-
 ## Create the App Shell
 
 An application shell is the minimal HTML, CSS, and JavaScript powering a user interface. You can think of it as the bundle of code you'd publish to an app store if you were building a native app.
