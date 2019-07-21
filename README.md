@@ -38,6 +38,12 @@ Below the last link tag ad these ones:
 <link rel="apple-touch-icon" href="/assets/img/icons/rick-morty-pwa-icon-512x512.png" />
 ```
 
+And it would also be very good to add this after your scripts:
+
+```html
+<noscript>Please enable JavaScript to continue using this application.</noscript>
+```
+
 ## Verify changes with Lighthouse
 
 ```bash
