@@ -33,14 +33,16 @@ Of course. We have not created our service worker yet.
 
 ## Copy Workbox libraries
 
-Take a look at your `package.json`. One of the installed `devDependencies` is the `workbox-cli`. As already mentioned workbox is not a library but a set of libraries. This means that you cannot just install all the libraries with an npm command. However with the help of the `workbox-cli` package we can copy those libraries so that they can be re-copied to the `dist` folder during the build process.
+Take a look at your `package.json`. One of the installed `devDependencies` is the `workbox-cli`. As already mentioned workbox is not a library but a set of libraries. This means that you cannot just install all the libraries with an npm command. However with the help of the `workbox-cli` package we can copy those libraries to the `dist` folder during the build process.
 
 In the [Workbox documentation](https://developers.google.com/web/tools/workbox/guides/get-started#importing_workbox) they recommend to import Workbox from the Workbox Content Delivery Network (CDN) but this is not a good practice. Check out [this Jake Archibald's post](https://jakearchibald.com/2018/third-party-css-is-not-safe/) where he talks about third party scripts.
 
-Instead of that we are going to serve the libraries ourselves. First copy them:
+Instead of that we are going to serve the libraries ourselves. Go to `package.json` and add a sequential (non parallel) execution at the end of the "build" script: `npx workbox copyLibraries dist/scripts`.
+
+If you don't know the difference between sequential and parallel execution in npm scripts check out this [Stack Overflow question](https://stackoverflow.com/questions/39172536/running-npm-scripts-sequentially/39172660#answer-39172660)
 
 ```bash
-npx workbox copyLibraries src/scripts/workbox-libs
+npx workbox copyLibraries src/scripts
 ```
 
 ## Create the App Shell
@@ -58,14 +60,14 @@ The first thing we need is a file for our custom service worker. Create it in `s
 
 ```javascript
 // Replace the x's in the string with the correct Workbox copied version!
-importScripts('/scripts/workbox-libs/workbox-vx.x.x/workbox-sw.js');
+importScripts('/scripts/workbox-vx.x.x/workbox-sw.js');
 
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
 
   workbox.setConfig({
     // Replace the x's in the string with the correct Workbox copied version!
-    modulePathPrefix: '/scripts/workbox-libs/workbox-vx.x.x/'
+    modulePathPrefix: '/scripts/workbox-vx.x.x/'
   });
 
   workbox.precaching.precacheAndRoute([]);
@@ -91,11 +93,15 @@ module.exports = {
   globDirectory: 'dist/',
   globPatterns: ['**/*.{png,jpeg,html,css,json,ico,js}'],
   swDest: 'dist/sw.js',
-  swSrc: 'src/sw-custom.js'
+  swSrc: 'src/sw-custom.js',
+  // Replace the x's in the string with the correct Workbox copied version!
+  globIgnores: ['scripts/workbox-vx.x.x/**/*']
 };
 ```
 
-Select all types of files. In the end a `workbox-config.js` file just like that one should be created in your project root folder.
+Select all types of files when you are prompted with that question. In the end a `workbox-config.js` file should be created in your project root folder.
+
+The `globIgnores` property should be added manually. We specify that property because we just don't need to cache the Workbox libraries.
 
 Now that we have our configs we can mofify the precache manifest placeholder in `sw-custom.js`.
 
@@ -108,9 +114,7 @@ workbox.precaching.precacheAndRoute([], {
 
 The `ignoreURLParametersMatching` property is used to avoid problems with our URL query parameters.
 
-But you need to do one more thing. Go to `package.json` and add a sequential (non parallel) execution at the end of the "build" script: `npx workbox injectManifest`.
-
-If you don't know the difference between sequential and parallel execution in npm scripts check out this [Stack Overflow question](https://stackoverflow.com/questions/39172536/running-npm-scripts-sequentially/39172660#answer-39172660)
+But you need to do one more thing. Go to `package.json` and add another sequential execution at the end of the "build" script: `npx workbox injectManifest`.
 
 Now build it.
 
@@ -118,7 +122,7 @@ Now build it.
 npm run build
 ```
 
-Notice that we have now copied both `dist/sw.js` and `dist/scripts/workbox-libs`.
+Notice that we have now copied both `dist/sw.js` and `dist/scripts/workbox-libs/workbox-vx.x.x`.
 
 Open the final service worker file and see what a precache manifest really looks like. The `workbox-cli` automatically adds revision hashes to the files in the manifest entries. This way Workbox intelligently tracks files that have been modified or are outdated, and automatically keep caches up to date with the latest file versions. It also removes cached files that are no longer in the manifest, keeping the amount of data stored on a user's device to a minimum.
 
