@@ -30,11 +30,13 @@ window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 installButton.addEventListener('click', installPWA);
 ```
 
-And then 2 callback functions. The first one is very short. It receives the `beforeinstallprompt` as an `event` parameter and saves it in the `deferredInstallPrompt` variable. It also makes the button visible by removing the `hidden` class. With this description in mind try to write the function from scratch. And remember that the name of this function is specified as a callback in one of the mentioned events.
+Now you need to declar those 2 callback functions: `saveBeforeInstallPromptEvent` and `installPWA`.
+
+Try to write the first one from scratch. It receives the `beforeinstallprompt` as an `event` parameter and saves it in the `deferredInstallPrompt` variable. It also makes the button visible by removing the `hidden` class.
 
 Done? OK.
 
-The second function prompts the banner, hiddes the button and depending on the user's choice shows a different message in the console. Copy it and paste it:
+The second function prompts the banner, hiddes the button and depending on the user's choice shows a different message in the console. Just copy it and paste it:
 
 ```javascript
 function installPWA(evt) {
