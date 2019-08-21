@@ -7,11 +7,11 @@ So your mission, should you choose to accept it, involves the creation of a new 
 Using your manifest your web app should:
 
 * Define both the short (`Rick & Morty`) and the long (`Rick & Morty PWA`) name of the app.
-* We will only include the mandatory 192x192px and 512x512px icons. They are located in `/assets/img/`.
+* Only include the mandatory 192x192px and 512x512px icons. They are located in `/assets/img/icons`. Replace their `"src"` accordingly.
 * Define `/index.html` as the opened page when the app is first launched.
 * Tell the browser you want your app to open in a `standalone` window.
-* Don't scope it. Either remove that property or leave it as `/`.
-* As per the background color we will use the yellow of our background color in the app: `#fccf6c`. And since the theme color should match the color of the tool bar we will employ `#004d40`.
+* Not be scoped. Either remove that property or leave it as `/`.
+* Use the yellow of our app for the background color: `#fccf6c`. And since the theme color should match the color of the tool bar we will employ `#004d40`.
 
 > Trick: if you use [this Web App Manifest Generator](https://app-manifest.firebaseapp.com/) it will generate all icon sizes for you.
 
