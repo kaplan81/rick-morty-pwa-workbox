@@ -2,22 +2,16 @@
 
 ## Create the web app manifest
 
-So your mission, should you choose to accept it, involves the creation of a new file: `manifest.json`. You just need to follow [this reference](https://developers.google.com/web/fundamentals/web-app-manifest/).
-
-You should create this file in the `src` folder. The `build` script will take care of copying it to the `dist` public folder.
+So your mission, should you choose to accept it, involves the creation of a new file: `src/manifest.json`. You just need to follow [this reference](https://developers.google.com/web/fundamentals/web-app-manifest/). You can start by copying and pasting the complete version of the manifest. The `build` script will take care of copying it to the `dist` public folder.
 
 Using your manifest your web app should:
 
-* Tell the browser you want your app to open in a `standalone` window.
-* Define `/index.html` as the opened page when the app is first launched.
 * Define both the short (`Rick & Morty`) and the long (`Rick & Morty PWA`) name of the app.
-* Specify what the app should look like on the dock or app launcher and on the splash screen with its icons and colors.
-
-We will only include the mandatory 192x192px and 512x512px icons. They are located in `/assets/img/`.
-
-As per the background color we will use the yellow of our background color in the app: `#fccf6c`. And since the theme color should match the color of the tool bar we will employ `#004d40`.
-
-And don't scope it. Either remove that property or leave it as `/`.
+* We will only include the mandatory 192x192px and 512x512px icons. They are located in `/assets/img/`.
+* Define `/index.html` as the opened page when the app is first launched.
+* Tell the browser you want your app to open in a `standalone` window.
+* Don't scope it. Either remove that property or leave it as `/`.
+* As per the background color we will use the yellow of our background color in the app: `#fccf6c`. And since the theme color should match the color of the tool bar we will employ `#004d40`.
 
 > Trick: if you use [this Web App Manifest Generator](https://app-manifest.firebaseapp.com/) it will generate all icon sizes for you.
 
