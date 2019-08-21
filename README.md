@@ -45,7 +45,8 @@ In our case we are ready to run our npm script, generate the corresponding repor
 > Do not forget to go online again first!
 
 ```bash
-npm run lighthouse
+git checkout step-00-non-progressive-app
+git checkout -b step-00-non-progressive-app-mine
 ```
 
 <img src="visuals/lighthouse-initial-stats.png">
