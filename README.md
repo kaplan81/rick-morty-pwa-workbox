@@ -112,7 +112,7 @@ But what happens if we go offline again? Well...
 
 We have cached the response from the server but then some resorce URLs are making extra calls to get the individual images. We are not caching that yet and that is why we can only see the precached placeholder image on each of the characters.
 
-> Tip: if you did not make it with the fisrt regular expression there is the possibility of cheating by looking at [`src/sw-custom.js`](https://github.com/kaplan81/rick-morty-pwa-workbox/blob/step-03-offline-experience/src/sw-custom.js) of the step 03 branch. 
+> Tip: if you did not make it with the fisrt regular expression there is the possibility of cheating by looking at [`src/sw-custom.js`](https://github.com/kaplan81/rick-morty-pwa-workbox/blob/step-03-offline-experience/src/sw-custom.js) of this (step 03) branch. 
 
 So, as mentioned previously, **case B** consists of caching the images. These are avatars so we don't need to constantly have the most up-to-date version of them. The **Stale While Revalidate** strategy seems to fit our needs here. With that will only use responses from the cache BUT we will also make a call to the network and if that call is successful we cache that response for the next time. Pretty neat, right?
 
