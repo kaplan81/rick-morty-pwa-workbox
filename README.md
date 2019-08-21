@@ -51,7 +51,7 @@ Go to `src/sw-custom.js` to add the necessary runtime caching. Copy and paste th
 ```javascript
 workbox.routing.registerRoute(
   // Replace with the correct regular expression.
-  /https:\/\/regular-expression\/for\/api-url/,
+  /https:\/\/regularexpression\.com\/for\/api-url/,
   // Replace MyCachingStrategy with the correct caching strategy method.
   new workbox.strategies.MyCachingStrategy({
     // Replace 'my-cache-name' with the correct cache name.
