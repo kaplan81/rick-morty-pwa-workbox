@@ -88,7 +88,7 @@ Let's generate our service worker.
 npx workbox wizard --injectManifest
 ```
 
-The Workbox wizard asks a series of questions. You can find out the answers by looking at what should be the resulting configuration file:
+The Workbox wizard asks a series of questions. You can find out the answers by looking at what should be the resulting `./workbox-config.js`:
 
 ```javascript
 module.exports = {
