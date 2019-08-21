@@ -47,6 +47,8 @@ Copy the workbox libraries in `dist/scripts` by building again:
 npm run build
 ```
 
+Take a look at the outcome and notice the Workbox version since you will need it in your code.
+
 ## Create the App Shell
 
 An application shell is the minimal HTML, CSS, and JavaScript powering a user interface. You can think of it as the bundle of code you'd publish to an app store if you were building a native app.
@@ -59,6 +61,8 @@ Workbox handles 2 types of caching:
 Be careful not to mistake precache manifest with web app manifest. The precache manifest only specifies the files that are going to be precached by our service worker. This is the App Shell.
 
 The first thing we need is a file for our custom service worker. Create it in `src/sw-custom.js`.
+
+Here you have a template for that file. Replace the parts that are indicated in the comments:
 
 ```javascript
 // Replace the x's in the string with the correct Workbox copied version!
@@ -88,7 +92,7 @@ Let's generate our service worker.
 npx workbox wizard --injectManifest
 ```
 
-The Workbox wizard asks a series of questions. You can find out the answers by looking at what should be the resulting `./workbox-config.js`:
+The Workbox wizard asks a series of questions. You can find out most of the answers by looking at what should be the resulting `./workbox-config.js`:
 
 ```javascript
 module.exports = {
@@ -101,11 +105,14 @@ module.exports = {
 };
 ```
 
-Select all types of files when you are prompted with that question. In the end a `workbox-config.js` file should be created in your project root folder.
+* The root of your web app is the `globDirectory`.
+* By default when they ask you about the file types all of them are selected. Just leave it like that.
+* The existing service worker file to be used with injectManifest is the `swSrc` since our custom file includes the placeholder array for that.
+* The rest of the answers are fine just as they are.
 
-The `globIgnores` property should be added manually. We specify that property because we just don't need to cache the Workbox libraries.
+Once you are done the `./workbox-config.js` should be created. After that the `globIgnores` property should be added manually. We specify that property because we just don't need to cache the Workbox libraries.
 
-Now that we have our configs we can mofify the precache manifest placeholder in `sw-custom.js`.
+And now that we have our configs we can mofify the precache manifest placeholder in `sw-custom.js`.
 
 ```javascript
 workbox.precaching.precacheAndRoute([], {
