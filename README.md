@@ -2,11 +2,11 @@
 
 ## Install Button
 
-With all this development you have probably missed the Web App Install Banner.
-
 Now if you want to install your app you need to go to the three-dot context menu and click on "Install Rick Morty PWA...". But we can do better.
 
-In `src/index.html` provide a `<button>` to the header. Add the classes `install-btn` and `hidden` to it. Go to `app.scss` and use the former to make it look nicer and the latter to hide the button with `display: none;`.
+In `src/index.html` provide a `<button>Install</button>` to the header, after the anchor tag. Add the classes `install-btn` and `hidden` to it. The latter will make the element to have a `display: none;`.
+
+Go to `app.scss` and use `install-btn` class to make it look nicer. Of course this is optional.
 
 ## Install Script
 
