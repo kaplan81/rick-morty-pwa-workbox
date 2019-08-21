@@ -122,7 +122,7 @@ So...
 * Name it `avatar-cache` this time.
 * Replace `NetworkFirst` with the correct method for the Stale While Revalidate caching strategy. Get it also from the [docs](https://developers.google.com/web/tools/workbox/guides/route-requests#handling_a_route_with_a_workbox_strategy).
 * Use the Workbox Expiration Plugin again to limit the cached entries to 20 and, additionally, limit the time (with the `maxAgeSeconds` property) to a week. You can take a look again at the [Workbox docs on Plugins](https://developers.google.com/web/tools/workbox/guides/using-plugins#workbox_plugins).
-* As per how to build up the regular expression this time, you can start by replacing `(?!\/avatar)` with just `\/avatar`, since this time we want to match that endpoint. Moreover we need to match whatever string that right next to that also contains a `()` capturing group that matches any character 0 or more times, plus an escaped dot (the dot of the file extension), plus a `(?:)` non-capturing group that matches either `jpeg` or `jpeg`, since that is the image format.
+* As per how to build up the regular expression this time, you can start by replacing `(?!\/avatar)` with just `\/avatar\/`, since this time we want to match that endpoint. Moreover we need to match whatever string that right next to that also contains a `()` capturing group that matches any character 1 or more times, plus an escaped dot (the dot of the file extension), plus a `(?:)` non-capturing group that matches either `jpeg` or `jpeg`, since that is the image format.
 
 
 Tick, tack, tick, tack, tick, tack,...
