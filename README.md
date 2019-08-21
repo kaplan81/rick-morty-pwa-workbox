@@ -152,5 +152,5 @@ Click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-03-off
 
 ```bash
 git checkout step-02-app-shell
-git branch step-02-app-shell-mine
+git checkout -b step-02-app-shell-mine
 ```
