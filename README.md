@@ -71,5 +71,5 @@ Click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-02-app
 
 ```bash
 git checkout step-01-web-app-manifest
-git branch step-01-web-app-manifest-mine
+git checkout -b step-01-web-app-manifest-mine
 ```
