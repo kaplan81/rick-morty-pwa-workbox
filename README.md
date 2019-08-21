@@ -30,7 +30,7 @@ window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 installButton.addEventListener('click', installPWA);
 ```
 
-Now you need to declar those 2 callback functions: `saveBeforeInstallPromptEvent` and `installPWA`.
+Now you need to declare those 2 callback functions: `saveBeforeInstallPromptEvent` and `installPWA`.
 
 Try to write the first one from scratch. It receives the `beforeinstallprompt` as an `event` parameter and saves it in the `deferredInstallPrompt` variable. It also makes the button visible by removing the `hidden` class.
 
