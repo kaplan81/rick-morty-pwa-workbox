@@ -41,7 +41,7 @@ Instead of that we are going to serve the libraries ourselves. Go to `package.js
 
 If you don't know the difference between sequential and parallel execution in npm scripts check out this [Stack Overflow question](https://stackoverflow.com/questions/39172536/running-npm-scripts-sequentially/39172660#answer-39172660)
 
-Copy the workbox libraries in `dist/scripts`.
+Copy the workbox libraries in `dist/scripts` by building again:
 
 ```bash
 npm run build
