@@ -13,7 +13,7 @@ if (workbox) {
   });
 
   workbox.routing.registerRoute(
-    /https:\/\/rickandmortyapi.com\/api\/character(?!\/avatar)/,
+    /https:\/\/rickandmortyapi\.com\/api\/character(?!\/avatar)/,
     new workbox.strategies.NetworkFirst({
       cacheName: 'rickandmortyapi-cache',
       plugins: [
@@ -25,7 +25,7 @@ if (workbox) {
   );
 
   workbox.routing.registerRoute(
-    /https:\/\/rickandmortyapi.com\/api\/character\/avatar(.*)\.(?:jpeg|jpg)/,
+    /https:\/\/rickandmortyapi\.com\/api\/character\/avatar(.*)\.(?:jpeg|jpg)/,
     new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'avatar-cache',
       plugins: [
