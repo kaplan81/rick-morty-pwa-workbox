@@ -141,7 +141,7 @@ Now your whole app should run perfectly offline!
 
 ## If you get in trouble
 
-If either the cache or the service workers behave funny and have the need for a fresh start you can always call on a very useful utility from the DevTools. Go to the Application -> Clear Storage section and click on "Clear site data". This will not only remove the storage from this origin but it will also unregister all existing service workers.
+If either the cache or the service workers behave funny and you have the need for a fresh start you can always call on a very useful utility from the DevTools. Go to the Application -> Clear Storage section and click on "Clear site data". This will not only remove the storage from this origin but it will also unregister all existing service workers.
 
 <img src="visuals/clear-storage.png">
 
