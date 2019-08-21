@@ -96,5 +96,5 @@ Congratulations!
 
 ```bash
 git checkout step-04-install-experience
-git branch step-04-install-experience-mine
+git checkout -b step-04-install-experience-mine
 ```
