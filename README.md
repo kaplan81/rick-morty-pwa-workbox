@@ -137,7 +137,7 @@ npm run build
 
 <img src="visuals/avatar-cache.png">
 
-Now your whole app should run perfecly offline!
+Now your whole app should run perfectly offline!
 
 ## If you get in trouble
 
