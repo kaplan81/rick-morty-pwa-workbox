@@ -60,7 +60,7 @@ Checkout the step 0 branch. That one, with the exception of `README.md`, is a co
 
 ```bash
 git checkout step-00-non-progressive-app
-git branch step-00-non-progressive-app-mine
+git checkout -b step-00-non-progressive-app-mine
 ```
 
 Now click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-00-non-progressive-app) to read the instructions of the step 0 branch.
