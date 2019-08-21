@@ -145,5 +145,5 @@ Click [here](https://github.com/kaplan81/rick-morty-pwa-workbox/tree/step-04-in
 
 ```bash
 git checkout step-03-offline-experience
-git branch step-03-offline-experience-mine
+git checkout -b step-03-offline-experience-mine
 ```
