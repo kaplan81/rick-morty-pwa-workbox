@@ -30,21 +30,23 @@ The base URL we are using is `https://rickandmortyapi.com/api/character`. Then w
 2. `/1` gets the character with id 1. We use it on the character page.
 3. `/avatar/1.jpeg` gets the picture (or avatar) of character with id 1. We use it on both pages.
 
+Checkout the 3 combinations in your browser.
+
 We are going to use `workbox.routing.registerRoute()` method to cache routes in runtime. In order to do that we need to use regular expressions for 2 cases:
 
 A. Match retrieved data but not subsequent image requests. In other words: get all calls to the characters but not to their avatar images. That also means: match endpoint 1 AND 2 but NOT 3.
 
 B. Match only the calls to avatar images.
 
-So let's start with case A. This is probably the most difficult part of this exercise. We all have problems from time to time with regular expressions so if you cannot figure it out just look at the code of this branch for the solution or ask your instructor to send the regular expression string to you.
+So let's start only with **case A**. This is probably the most difficult part of this exercise. We all have problems from time to time with regular expressions so if you cannot figure it out just look at the code of this branch for the solution or ask your instructor to send the regular expression string to you.
 
 But the pattern to match is not the only parameter to the `workbox.routing.registerRoute()` method. We also need a caching strategy.
 
-Since new characters can die as the TV shows goes on, we need to have the most up-to-date information so we will use the Network First caching strategy (falling back to cache).
+Since new characters can die as the TV shows goes on, we need to have the most up-to-date information so we will use the **Network First** caching strategy (falling back to cache).
 
 If you want to know more about the most common (runtime) caching strategies take a look at the [Workbox documentation](https://developers.google.com/web/tools/workbox/guides/route-requests#handling_a_route_with_a_workbox_strategy). The `workbox.strategies` package takes care of the implementation of those ones.
 
-Go to `src/sw-custom.js` and add the necessary runtime caching. Follow this implementation template:
+Go to `src/sw-custom.js` to add the necessary runtime caching. Copy and paste this template right after the `precacheAndRoute` snippet.
 
 ```javascript
 workbox.routing.registerRoute(
@@ -60,11 +62,10 @@ workbox.routing.registerRoute(
 );
 ```
 
-For the precache Workbox follows the `workbox-precache-xxx` naming convention. If we do not specify a `cacheName` it will do the same but with `workbox-runtime-xxx`. In this case we will use the name `rickandmortyapi-cache` in order to make it unique.
-
-And last but not least: maybe you haven't noticed but we are only getting the first 20 results of the API. This means that we can limit the number of entries to 20. For that we need the workbox expiration plugin.
-
-Take a look at how how to implement a Workbox plugin [here](https://developers.google.com/web/tools/workbox/guides/using-plugins#workbox_plugins).
+* Make a unique name for this `cacheName`. Use for example `rickandmortyapi-cache`. For the precache Workbox follows the `workbox-precache-xxx` naming convention. If we would not specify a `cacheName` it would do the same but with `workbox-runtime-xxx`.
+* Replace `MyCachingStrategy` with the correct method for the Network First caching strategy. It is in the mentioned [docs](https://developers.google.com/web/tools/workbox/guides/route-requests#handling_a_route_with_a_workbox_strategy).
+* Use th Workbox Expiration Plugin to limit the cached entries to 20 since the API is only giving us that many. For that take a look at how how to implement a Workbox plugin [here](https://developers.google.com/web/tools/workbox/guides/using-plugins#workbox_plugins).
+* As per how to build up the regular expression you could first replace the API base URL and then add the `()` group that tells the regex to "match something only if that something is NOT followed by other something (in this case by `\/avatar`). Find out by looking at [this Mozilla doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
 ## A new service worker
 
