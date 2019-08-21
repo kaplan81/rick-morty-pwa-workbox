@@ -64,8 +64,8 @@ workbox.routing.registerRoute(
 
 * Make a unique name for this `cacheName`. Use for example `rickandmortyapi-cache`. For the precache Workbox follows the `workbox-precache-xxx` naming convention. If we would not specify a `cacheName` it would do the same but with `workbox-runtime-xxx`.
 * Replace `MyCachingStrategy` with the correct method for the Network First caching strategy. It is in the mentioned [docs](https://developers.google.com/web/tools/workbox/guides/route-requests#handling_a_route_with_a_workbox_strategy).
-* Use th Workbox Expiration Plugin to limit the cached entries to 20 since the API is only giving us that many. For that take a look at how how to implement a Workbox plugin [here](https://developers.google.com/web/tools/workbox/guides/using-plugins#workbox_plugins).
-* As per how to build up the regular expression you could first replace the API base URL and then add the `()` group that tells the regex to "match something only if that something is NOT followed by other something (in this case by `\/avatar`). Find out by looking at [this Mozilla doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+* Use the Workbox Expiration Plugin to limit the cached entries to 20 (with the `maxEntries` property) since the API is only giving us that many. For that take a look at how how to implement a Workbox plugin [here](https://developers.google.com/web/tools/workbox/guides/using-plugins#workbox_plugins).
+* As per how to build up the regular expression you could first replace the API base URL and then add the `()` capturing group that tells the regex to "match something only if that something is NOT followed by other something (in this case by `\/avatar`). Find out by looking at [this Mozilla doc](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions).
 
 ## A new service worker
 
@@ -114,11 +114,16 @@ We have cached the response from the server but then some resorce URLs are makin
 
 > Tip: if you did not make it with the fisrt regular expression there is the possibility of cheating by looking at [`src/sw-custom.js`](https://github.com/kaplan81/rick-morty-pwa-workbox/blob/step-03-offline-experience/src/sw-custom.js) of the step 03 branch. 
 
-Your next challenge consists of caching the images. These are avatars so we don't need to constantly have the most up-to-date version of them. The Stale While Revalidate strategy seems to fit our needs here. With that will only use responses from the cache BUT we will also make a call to the network and if that call is successful we cache that response for the next time. Pretty neat, right?
+So, as mentioned previously, **case B** consists of caching the images. These are avatars so we don't need to constantly have the most up-to-date version of them. The **Stale While Revalidate** strategy seems to fit our needs here. With that will only use responses from the cache BUT we will also make a call to the network and if that call is successful we cache that response for the next time. Pretty neat, right?
 
-As we already know we are using the same base URL as with the API calls but with a different endpoint. We are looking for another regular expression but this time one that matches that base with an endpoint that contains the word `avatar` and ends with the string `jpeg`. 
+So...
 
-Additionally we want to store the images in a named `avatar-cache`, again we want to limit the entries to 20 and also, using the same plugin, we want the cached images to expire in a week so we get updated weekly. For that we would use the `maxAgeSeconds` property from the plugin.
+* Duplicate the `registerRoute` snippet. It will be your template for this case.
+* Name it `avatar-cache` this time.
+* Replace `NetworkFirst` with the correct method for the Stale While Revalidate caching strategy. Get it also from the [docs](https://developers.google.com/web/tools/workbox/guides/route-requests#handling_a_route_with_a_workbox_strategy).
+* Use the Workbox Expiration Plugin again to limit the cached entries to 20 and, additionally, limit the time (with the `maxAgeSeconds` property) to a week, since for the images we do not need to be constantly updated. You can take a look again at the Workbox Plugins [docs](https://developers.google.com/web/tools/workbox/guides/using-plugins#workbox_plugins).
+* As per how to build up the regular expression this time, you can start by replacing `(?!\/avatar)` with just `\/avatar`, since this time we want to match that endpoint. Moreover we need to match whatever string that right next to that also contains a `()` capturing group that matches any character 0 or more times, plus an escaped dot (the dot of the file extension), plus a `(?:)` non-capturing group that matches either with `jpeg` or with `jpeg`, since that is the image format.
+
 
 Tick, tack, tick, tack, tick, tack,...
 
