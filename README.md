@@ -17,6 +17,8 @@ We will only include the mandatory 192x192px and 512x512px icons. They are locat
 
 As per the background color we will use the yellow of our background color in the app: `#fccf6c`. And since the theme color should match the color of the tool bar we will employ `#004d40`.
 
+> Trick: if you use [this Web App Manifest Generator](https://app-manifest.firebaseapp.com/) it will generate all icon sizes for you.
+
 ## Add meta and link tags
 
 Open `src/index.html`
