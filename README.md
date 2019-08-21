@@ -18,7 +18,7 @@ And we take the framework agnostic approach. React developers, Angular developer
 
 ## Why Workbox?
 
-Caching information with service workers involves an amount of boilerplate, configurations and file versioning. Workbox deals with that seamlessly and allowes you to focus on how to take full advantage of a PWA's offline capabilities.
+Caching information with service workers involves an amount of boilerplate, configurations and file versioning. Workbox deals with that seamlessly and allows you to focus on how to take full advantage of a PWA's offline capabilities.
 
 It is not a library but a set of libraries and Node modules that make your life easier.
 
@@ -40,7 +40,7 @@ However let us say that you are reading the instructions of the first step from 
 
 ```bash
 git checkout step-01-web-app-manifest
-git branch step-01-web-app-manifest-mine
+git checkout -b step-01-web-app-manifest-mine
 ```
 
 This way you step ahead, you do not get delayed and moreover you keep a clean workflow.
