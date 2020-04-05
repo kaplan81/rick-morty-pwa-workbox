@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Demo on how to do a PWA with workbox step by step.",
   "scripts": {
-    "build": "./build.sh && npx workbox copyLibraries dist/scripts && npx workbox injectManifest",
+    "build": "./build.sh",
     "clean": "rm -rf ./dist/*",
     "clean:css": "rm -rf ./dist/css/*",
     "lighthouse": "npx lighthouse http://localhost:1981/ --view --chrome-flags=\"--headless\" --output-path=./lighthouse/lighthouse_\"$(date \"+%Y-%m-%d_%H-%M-%S\")\".report.html",
@@ -21,10 +21,12 @@
   "homepage": "https://github.com/kaplan81/rick-morty-pwa-workbox#readme",
   "devDependencies": {
     "copyfiles": "^2.1.0",
+    "kind-of": ">=6.0.3",
     "lighthouse": "^5.1.0",
     "lodash": ">=4.17.13",
     "lodash.template": ">=4.5.0",
     "mem": "^5.1.1",
+    "minimist": ">=1.2.3",
     "sass": "^1.22.0",
     "serve": "^11.0.2",
     "workbox-cli": "^4.3.1"
