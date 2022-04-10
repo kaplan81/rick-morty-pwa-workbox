@@ -26,7 +26,7 @@
     "lodash": ">=4.17.13",
     "lodash.template": ">=4.5.0",
     "mem": "^5.1.1",
-    "minimist": ">=1.2.3",
+    "minimist": ">=1.2.6",
     "sass": "^1.22.0",
     "serve": "^11.0.2",
     "workbox-cli": "^4.3.1"
