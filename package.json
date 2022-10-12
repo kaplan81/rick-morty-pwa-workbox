@@ -22,7 +22,7 @@
   "devDependencies": {
     "copyfiles": "^2.1.0",
     "kind-of": ">=6.0.3",
-    "lighthouse": "^5.1.0",
+    "lighthouse": "^9.6.7",
     "lodash": ">=4.17.13",
     "lodash.template": ">=4.5.0",
     "mem": "^5.1.1",
